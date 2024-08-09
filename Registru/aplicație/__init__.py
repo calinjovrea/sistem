@@ -22,7 +22,7 @@ aplicație = Flask(__name__)
 
 registru = Registrul()
 
-cheie_geneză_privată = Portofel.din_cheie(Portofel,f"C:\\Users\\Calin\\Documents\\GitHub\\sistem\\Registru\\utile\\chei\\cheie_privată.pem")
+cheie_geneză_privată = Portofel.din_cheie(Portofel,f"C:\\Users\\jovre\\Documents\\GitHub\\sistem\\sistem\\Registru\\utile\\chei\\cheie_privată.pem")
 cheie_geneză_publică = cheie_geneză_privată.public_key()
 portofel = Portofel(registru)
 portofel.cheie_privată = cheie_geneză_privată
@@ -34,13 +34,13 @@ pubsub = PubSub(registru, mină)
 
 data_queue = queue.Queue()
 
-URL = 'http://localhost:5000'
+URL = 'http://localhost'
 
 @aplicație.route('/')
 def default():
     PORT_RĂDĂCINĂ=5000
 
-    rezultat = requests.get(f'http://localhost:{PORT_RĂDĂCINĂ}/registru')
+    rezultat = requests.get(f'{URL}:{PORT_RĂDĂCINĂ}/registru')
 
     rezultat_registru = registru.din_json(rezultat.json())
 
@@ -175,7 +175,7 @@ PORT = PORT_RĂDĂCINĂ
 if 'True' in os.environ.get('PEER'):
     PORT = random.randint(5001,35000)
 
-    rezultat = requests.get(f'http://localhost:{PORT_RĂDĂCINĂ}/registru')
+    rezultat = requests.get(f'{URL}:{PORT_RĂDĂCINĂ}/registru')
 
     rezultat_registru = registru.din_json(rezultat.json())
 
