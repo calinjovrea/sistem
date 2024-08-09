@@ -62,14 +62,14 @@ class Portofel:
 
     @staticmethod
     def din_cheie(self, file):
-        with open(file, 'r+') as f:
+        with open(file, "r+") as f:
             informații = f.read()
 
         # print(load_pem_private_key(informații.encode('utf-8'), password=None).public_key().public_bytes(
         #     encoding=serialization.Encoding.PEM,
         #     format=serialization.PublicFormat.SubjectPublicKeyInfo
         # ).decode('utf-8'))
-        return load_pem_private_key(informații.encode('utf-8'), password=None)
+        return load_pem_private_key(informații.encode("utf-8"), password=None)
 
     def semnează(self, informații):
         """

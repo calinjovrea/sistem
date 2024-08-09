@@ -10,7 +10,7 @@ class Consensus():
         self.puneNodGeneză()
 
     def puneNodGeneză(self):
-        cheie_geneză_privată = Portofel.din_cheie(Portofel,f'C:\\Users\\jovre\\Documents\\system\\Registru\\utile\\chei\\cheie_privată.pem')
+        cheie_geneză_privată = Portofel.din_cheie(Portofel,f"C:\\Users\\Calin\\Documents\\GitHub\\sistem\\Registru\\utile\\chei\\cheie_privată.pem")
         cheie_geneză_publică = cheie_geneză_privată.public_key()
         
         portofel = Portofel()

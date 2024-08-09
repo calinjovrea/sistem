@@ -52,6 +52,18 @@ class Listener(SubscribeCallback):
         elif mesaj.channel == CANALE['BULK']:
             [self.mină.pune_tranzacția(Tranzacție.din_json(tranzacție)) for tranzacție in mesaj.message['tranzacții']]
             print('Bulk Efectuat !')
+        elif mesaj.channel == CANALE['REGISTRU']:
+            rezultat = requests.get(f'https://fe60-82-77-240-24.ngrok-free.app/registru')
+
+            rezultat_registru = self.registru.din_json(rezultat.json())
+
+            try:
+                self.registru.înlocuiește_listă(rezultat_registru.listă)
+                self.registru.e_validă_lista(rezultat_registru.listă)
+                print('\nRegistrul s-a sincronizat !')
+            except Exception as e:
+                print(f'\nRegistrul nu s-a sincronizat, eroare {e}')
+            
 
 class PubSub():
     """
@@ -85,6 +97,9 @@ class PubSub():
         """
 
         self.publish(CANALE['TRANSACTION'],transacție.to_json())
+
+    def transmitere_registru(self):
+        self.publish(CANALE['REGISTRU'],'REGISTRU')
 
 def main():
     pass

@@ -22,7 +22,7 @@ aplicație = Flask(__name__)
 
 registru = Registrul()
 
-cheie_geneză_privată = Portofel.din_cheie(Portofel,f'C:\\Users\\jovre\\Documents\\system\\Registru\\utile\\chei\\cheie_privată.pem')
+cheie_geneză_privată = Portofel.din_cheie(Portofel,f"C:\\Users\\Calin\\Documents\\GitHub\\sistem\\Registru\\utile\\chei\\cheie_privată.pem")
 cheie_geneză_publică = cheie_geneză_privată.public_key()
 portofel = Portofel(registru)
 portofel.cheie_privată = cheie_geneză_privată
@@ -50,7 +50,7 @@ def default():
     except Exception as e:
         print(f'\nRegistrul nu s-a sincronizat, eroare {e}')
 
-    return f'Welcome To Individual Freedom ! REGISTRUL ARE {len(str(rezultat_registru.to_json()).encode('utf-8'))/1000}'
+    return f"Welcome To Individual Freedom ! REGISTRUL ARE {len(str(rezultat_registru.to_json()).encode('utf-8'))/1000}"
 
 
 @aplicație.route('/registru')
