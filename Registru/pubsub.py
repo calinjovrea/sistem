@@ -53,7 +53,7 @@ class Listener(SubscribeCallback):
             [self.mină.pune_tranzacția(Tranzacție.din_json(tranzacție)) for tranzacție in mesaj.message['tranzacții']]
             print('Bulk Efectuat !')
         elif mesaj.channel == CANALE['REGISTRU']:
-            rezultat = requests.get(f'https://fe60-82-77-240-24.ngrok-free.app/registru')
+            rezultat = requests.get(f'https://5692-82-77-240-24.ngrok-free.app/registru')
 
             rezultat_registru = self.registru.din_json(rezultat.json())
 
